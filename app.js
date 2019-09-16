@@ -35,7 +35,7 @@ class SinglyLinkedList {
 			this.head = null;
 			this.tail = null;
 		} else {
-			let newTail = null;
+			let newTail = current;
 			
 			while (current.next !== null) {
 				newTail = current;
@@ -77,6 +77,20 @@ class SinglyLinkedList {
 		this.length++;
 		return this;
 	}
+
+	get(index) {
+		if (index < 0 || index >= this.length) return undefined;
+
+		let counter = 0;
+		let current = this.head;
+
+		while (counter < index) {
+			current = current.next;
+			counter++;
+		}
+
+		return current;
+	}
 };
 
 const list = new SinglyLinkedList();
@@ -89,5 +103,6 @@ list.shift();
 list.shift();
 list.push(100);
 list.unshift(13);
+list.get(1);
 
 console.log(list);
