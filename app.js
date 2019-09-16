@@ -100,6 +100,21 @@ class SinglyLinkedList {
 		node.val = val;
 		return true;
 	}
+
+	insert(index, val) {
+		if (index < 0 || index > this.length) return false;
+
+		if (index === 0) return !!this.unshift(val);
+		if (index === this.length) return !!this.push(val);
+
+		const node = new Node(val);
+		const prevNode = this.get(index - 1);
+
+		node.next = prevNode.next;
+		prevNode.next = node;
+		this.length++
+		return true;
+	}
 };
 
 const list = new SinglyLinkedList();
@@ -113,6 +128,7 @@ list.shift();
 list.push(100);
 list.unshift(13);
 list.get(1);
-list.set(1, 79)
+list.set(1, 79);
+list.insert(1, 43);
 
 console.log(list);
