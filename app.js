@@ -24,7 +24,7 @@ class SinglyLinkedList {
 		}
 
 		this.length++;
-		return list;
+		return this;
 	}
 
 	pop() {
@@ -62,6 +62,21 @@ class SinglyLinkedList {
 
 		return current;
 	}
+
+	unshift(val) {
+		const node = new Node(val);
+
+		if (!this.head) {
+			this.head = node;
+			this.tail = this.head;
+		} else {
+			node.next = this.head;
+			this.head = node;
+		}
+
+		this.length++;
+		return this;
+	}
 };
 
 const list = new SinglyLinkedList();
@@ -73,5 +88,6 @@ list.push(14);
 list.shift();
 list.shift();
 list.push(100);
+list.unshift(13);
 
 console.log(list);
