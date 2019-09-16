@@ -124,8 +124,38 @@ class SinglyLinkedList {
 		const removedNode = prevNode.next;
 		prevNode.next = removedNode.next;
 		this.length--;
-		console.log(removedNode.val);
 		return removedNode.val;
+	}
+
+	reverse() {
+		let node = this.head;
+		this.head = this.tail;
+		this.tail = node;
+
+		let next = null;
+		let prev = null;
+
+		for (let i = 0; i < this.length; i++) {
+			next = node.next;
+			node.next = prev;
+			prev = node;
+			node = next;
+		}
+
+		return this;
+	}
+
+	// This method is only for testing purposes
+	print() {
+		const arr = [];
+		let current = this.head;
+
+		while (current) {
+			arr.push(current.val);
+			current = current.next;
+		}
+
+		console.log(arr);
 	}
 };
 
@@ -136,12 +166,12 @@ list.push(26);
 list.pop();
 list.push(14);
 list.shift();
-list.shift();
 list.push(100);
 list.unshift(13);
 list.get(1);
 list.set(1, 79);
 list.insert(1, 43 );
 list.remove(2);
-
-console.log(list);
+list.print();
+list.reverse();
+list.print();
