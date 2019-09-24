@@ -79,6 +79,25 @@ class DoublyLinkedList {
 		return this;
 	}
 
+	get(index) {
+		if (index < 0 || index >= this.length) return null;
+		let foundNode = null;
+
+		if (index <= this.length / 2) {
+			foundNode = this.head;
+			for (let i = 0; i < index; i++) {
+				foundNode = foundNode.next;
+			}
+		} else {
+			foundNode = this.tail;
+			for (let i = this.length - 1; index < i; i--) {
+				foundNode = foundNode.prev;
+			}
+		}
+
+		return foundNode;
+	}
+
 	// This method is only for testing purposes
 	print() {
 		const arr = [];
@@ -101,6 +120,9 @@ list.shift();
 list.push(9);
 list.push(1);
 list.unshift(5);
-list.unshift(9);
-list.pop();
+list.unshift(7);
+list.push(13)
+list.push(76)
+list.push(55)
+list.get(5);
 list.print();
