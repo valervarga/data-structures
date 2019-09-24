@@ -98,6 +98,14 @@ class DoublyLinkedList {
 		return foundNode;
 	}
 
+	set(index, val) {
+		const node = this.get(index);
+		if (!node) return false;
+
+		node.val = val;
+		return true;
+	}
+
 	// This method is only for testing purposes
 	print() {
 		const arr = [];
@@ -125,4 +133,5 @@ list.push(13)
 list.push(76)
 list.push(55)
 list.get(5);
+list.set(5, 'set');
 list.print();
