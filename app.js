@@ -30,11 +30,27 @@ class Stack {
 
 		return ++this.length;
 	}
+
+	pop() {
+		if (!this.first) return null;
+		const oldNode = this.first;
+
+		if (this.length === 1) {
+			this.last = null;
+		}
+		this.first = this.first.next;
+
+		this.length--;
+		return oldNode;
+	}
 }
 
 const stack = new Stack();
 stack.push(1);
 stack.push(230);
 stack.push(56);
+stack.pop();
+stack.pop();
+stack.pop();
 
 console.log(stack);
