@@ -13,6 +13,22 @@ class DoublyLinkedList {
 		this.length = 0;
 	}
 
+	push(val) {
+		const newNode = new Node(val);
+
+		if (!this.head) {
+			this.head = newNode;
+			this.tail = newNode;
+		} else {
+			newNode.prev = this.tail;
+			this.tail.next = newNode;
+			this.tail = newNode;
+		}
+
+		this.length++;
+		return this;
+	}
+
 	// This method is only for testing purposes
 	print() {
 		const arr = [];
@@ -27,5 +43,8 @@ class DoublyLinkedList {
 	}
 }
 
-const list = DoublyLinkedList();
+const list = new DoublyLinkedList();
+list.push(1);
+list.push(4);
+list.push(9);
 list.print();
