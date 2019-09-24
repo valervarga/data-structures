@@ -106,6 +106,23 @@ class DoublyLinkedList {
 		return true;
 	}
 
+	insert(index, val) {
+		if (index < 0 || index > this.length) return false;
+		if (index === 0) return !!this.unshift(val);
+		if (index === this.length) return !!this.push(val);
+
+		const node = this.get(index);
+		const newNode = new Node(val);
+
+		newNode.prev = node.prev;
+		newNode.next = node;
+		node.prev.next = newNode;
+		node.prev = newNode;
+
+		this.length++;
+		return true;
+	}
+
 	// This method is only for testing purposes
 	print() {
 		const arr = [];
@@ -127,6 +144,7 @@ list.pop();
 list.shift();
 list.push(9);
 list.push(1);
+list.insert(2, 'first insert');
 list.unshift(5);
 list.unshift(7);
 list.push(13)
@@ -134,4 +152,5 @@ list.push(76)
 list.push(55)
 list.get(5);
 list.set(5, 'set');
+list.insert(2, 'insert');
 list.print();
