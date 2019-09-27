@@ -14,11 +14,9 @@ class BinarySearchTree {
 	insert(value) {
 		const node = new Node(value);
 
-		if (!this.root) {
-			this.root = node;
-		} else {
-			this.determineTreeSide(this.root, node);
-		}
+		!this.root
+			? this.root = node
+			: this.determineTreeSide(this.root, node);
 
 		return this;
 	}
